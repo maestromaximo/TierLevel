@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LowFieldActivity">
+
+    <TextView
+        android:id="@+id/lowFieldTextview"
+        android:layout_width="169dp"
+        android:layout_height="62dp"
+        android:gravity="center_horizontal"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.124" />
+
+    <Button
+        android:id="@+id/isItCompleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Is It Complete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lowFieldTextview"
+        app:layout_constraintVertical_bias="0.685" />
+
+    <TextView
+        android:id="@+id/displayLowFieldTextview"
+        android:layout_width="225dp"
+        android:layout_height="87dp"
+        android:layout_marginTop="160dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/isItCompleteButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lowFieldTextview"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/backToHfButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="200dp"
+        android:text="back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/isItCompleteButton"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/displayLowFieldTextview"
+        app:layout_constraintVertical_bias="0.984" />
+</androidx.constraintlayout.widget.ConstraintLayout>

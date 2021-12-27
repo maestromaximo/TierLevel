@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity">
+
+    <TextView
+        android:id="@+id/overallLevelTextview"
+        android:layout_width="179dp"
+        android:layout_height="66dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center_horizontal"
+        android:text="Level:"
+        android:textSize="24sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.569"
+        app:layout_constraintStart_toEndOf="@+id/backToIntroFromProfileButton"
+        app:layout_constraintTop_toBottomOf="@+id/profileScrollView"
+        app:layout_constraintVertical_bias="0.409" />
+
+    <TextView
+        android:id="@+id/profileTitleTextview"
+        android:layout_width="179dp"
+        android:layout_height="66dp"
+        android:gravity="center_horizontal"
+        android:text="Profile"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.02" />
+
+    <ScrollView
+        android:id="@+id/profileScrollView"
+        android:layout_width="381dp"
+        android:layout_height="381dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileTitleTextview"
+        app:layout_constraintVertical_bias="0.332">
+
+        <TextView
+            android:id="@+id/insertUpdateProfileTextview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Career"
+            android:textSize="16sp" />
+    </ScrollView>
+
+    <Button
+        android:id="@+id/backToIntroFromProfileButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.147"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileScrollView"
+        app:layout_constraintVertical_bias="0.341" />
+
+    <TextView
+        android:id="@+id/rankTextview"
+        android:layout_width="192dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginBottom="57dp"
+        android:gravity="center_horizontal"
+        android:text="Rank:"
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/profileScrollView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileTitleTextview"
+        app:layout_constraintVertical_bias="0.0" />
+</androidx.constraintlayout.widget.ConstraintLayout>
