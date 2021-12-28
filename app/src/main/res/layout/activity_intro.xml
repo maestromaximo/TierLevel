@@ -30,4 +30,28 @@
       app:layout_constraintStart_toEndOf="@+id/openProfileButton"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.499" />
+
+  <Button
+      android:id="@+id/clearProgessButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="||Clear Progress||"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.912"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/fieldsButton"
+      app:layout_constraintVertical_bias="0.906" />
+
+  <TextView
+      android:id="@+id/clearProgressTextview"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="4dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.713"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/clearProgessButton"
+      app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

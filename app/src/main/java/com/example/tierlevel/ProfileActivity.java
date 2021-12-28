@@ -30,8 +30,8 @@ public class ProfileActivity extends AppCompatActivity {
     long tStart, tEnd, tDelta;
     Boolean isItStudy = false;
 
-    SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-    SharedPreferences.Editor editor = preferences.edit();
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
 
 
 
@@ -48,6 +48,9 @@ public class ProfileActivity extends AppCompatActivity {
         studyButton = (Button)findViewById(R.id.studyTimeButton);
         studyTimeTextview = (TextView) findViewById(R.id.studyTimeTextview);
         fields = new ArrayList<Field>();
+
+        preferences = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
+        editor = preferences.edit();
 
         makeFields();
         calculateTotalXp();
