@@ -2,25 +2,38 @@ package com.example.tierlevel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Timer;
 
 public class ProfileActivity extends AppCompatActivity {
 
     TextView profileTitleTextview, updateTextview, overallLevelTextview, rankTextview;
+    TextView studyTimeTextview;
     ScrollView scrollView;
-    Button goBackButton;
+    Button goBackButton, studyButton;
     ArrayList<Field> fields;
     String[] fieldNames = {"Physics","Chemistry","Mathematics","Biology","Computation","Art"};
     Level overall;
-    int totalXp = 0;
+    int totalXp = 0, studyXp;
     //String bigS;
+    long tStart, tEnd, tDelta;
+    Boolean isItStudy = false;
+
+    SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+    SharedPreferences.Editor editor = preferences.edit();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +45,8 @@ public class ProfileActivity extends AppCompatActivity {
         updateTextview = (TextView) findViewById(R.id.insertUpdateProfileTextview);
         overallLevelTextview = (TextView) findViewById(R.id.overallLevelTextview);
         rankTextview = (TextView) findViewById(R.id.rankTextview);
+        studyButton = (Button)findViewById(R.id.studyTimeButton);
+        studyTimeTextview = (TextView) findViewById(R.id.studyTimeTextview);
         fields = new ArrayList<Field>();
 
         makeFields();
@@ -48,7 +63,60 @@ public class ProfileActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        studyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activateStudyTime();
+            }
+        });//click
     }//onCreate
+
+    private void activateStudyTime() {
+
+
+        saveFields();
+        try {
+            isItStudy = preferences.getBoolean("isItCliked", false);
+        }catch (Exception e){
+            studyTimeTextview.setText("//error// Try again");
+        }
+        if (!isItStudy) {
+            tStart = System.currentTimeMillis();
+            editor.putLong("time", tStart);
+            isItStudy = true;
+            editor.putBoolean("isItCliked", isItStudy);
+            editor.apply();
+            studyTimeTextview.setText("Started!");
+        }else{
+
+            tStart = preferences.getLong("time", 0);
+            tEnd = System.currentTimeMillis();
+            tDelta = tEnd - tStart;
+            isItStudy = false;
+            editor.putBoolean("isItCliked", isItStudy);
+            editor.apply();
+            int xpEarned = xpEarned(tDelta);
+            studyTimeTextview.setText("Xp Earned: "+ String.valueOf(xpEarned)+"!");
+
+            int xpxp = preferences.getInt("xpxp", 0) + xpEarned;
+            editor.putInt("xpxp", xpxp);
+            editor.apply();
+
+        }
+
+        saveFields();
+    }//activateStudyTime
+
+    /*
+    Half the quantity of minutes elapsed
+     */
+    private int xpEarned(long tDelta) {
+
+        int timeInMinutes = ((int)(tDelta/1000)/60)/2;
+        return timeInMinutes;
+
+    }
 
     private void determineRank() {
 
@@ -73,13 +141,18 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void calculateTotalXp() {
         int sum = 0;
+        try {
+            studyXp = preferences.getInt("xpxp", 0);
+        }catch (Exception e){
+            studyXp = 0;
+        }
         for (Field field: fields){
             field.updateLv();
             sum += field.getLevel().getCumulativeXp();
 
         }
         saveFields();
-        totalXp = sum;
+        totalXp = sum + studyXp;
     }
 
     private void makeFields() {

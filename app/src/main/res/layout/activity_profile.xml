@@ -81,4 +81,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profileTitleTextview"
         app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/studyTimeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:text="Study"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/backToIntroFromProfileButton"
+        app:layout_constraintVertical_bias="0.67" />
+
+    <TextView
+        android:id="@+id/studyTimeTextview"
+        android:layout_width="197dp"
+        android:layout_height="49dp"
+        android:gravity="center_horizontal"
+        android:text="Study time:"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.313"
+        app:layout_constraintStart_toEndOf="@+id/studyTimeButton"
+        app:layout_constraintTop_toBottomOf="@+id/overallLevelTextview"
+        app:layout_constraintVertical_bias="0.507" />
 </androidx.constraintlayout.widget.ConstraintLayout>
